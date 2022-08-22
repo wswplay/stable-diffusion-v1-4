@@ -62,7 +62,7 @@ pipe = pipe.to(device)
 
 prompt = "a photograph of an astronaut riding a horse"
 with autocast("cuda"):
-    image = pipe(prompt)["sample"][0]  # image here is in PIL format
+    image = pipe(prompt, generator=generator)["sample"][0]  # image here is in PIL format
     
 image.save(f"astronaut_rides_horse.png")
 ```
