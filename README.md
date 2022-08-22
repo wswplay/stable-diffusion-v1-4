@@ -10,7 +10,7 @@ inference: false
 # Stable Diffusion v1-4 Model Card
 
 Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input.
-For more information about how Stable Diffusion functions, please have a look at [🤗's Stable Diffusion with D🧨iffusers blog](hf.co/blog/stable_diffusion).
+For more information about how Stable Diffusion functions, please have a look at [🤗's Stable Diffusion with D🧨iffusers blog](https://huggingface.co/blog/stable_diffusion).
 
 The **Stable-Diffusion-v1-4** checkpoint was initialized with the weights of the [Stable-Diffusion-v1-3](https:/steps/huggingface.co/CompVis/stable-diffusion-v1-3) 
 checkpoint and subsequently fine-tuned on X steps on Y with Z.
