@@ -149,6 +149,8 @@ Using the model to generate content that is cruel to individuals is a misuse of 
   [LAION-5B](https://laion.ai/blog/laion-5b/) which contains adult material
   and is not fit for product use without additional safety mechanisms and
   considerations.
+- No additional measures were used to deduplicate the dataset. As a result, we observe some degree of memorization for images that are duplicated in the training data.
+  The training data can be searched at [https://rom1504.github.io/clip-retrieval/](https://rom1504.github.io/clip-retrieval/) to possibly assist in the detection of memorized images.
 
 ### Bias
 
