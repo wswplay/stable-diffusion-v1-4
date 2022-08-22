@@ -62,24 +62,30 @@ Run this command to log in with your HF Hub token if you haven't before:
 huggingface-cli login
 ```
 
-Running the pipeline with the default PLMS scheduler:
+Running the pipeline with the default PNDM scheduler:
+
 ```python
 import torch
 from torch import autocast
 from diffusers import StableDiffusionPipeline
 
-model_id = "CompVis/stable-diffusion-v1-4"
+model_id = "CompVis/stable-diffusion-v1-1"
 device = "cuda"
 
-generator = torch.Generator(device=device).manual_seed(0)
+
 pipe = StableDiffusionPipeline.from_pretrained(model_id, use_auth_token=True)
 pipe = pipe.to(device)
+```
 
-prompt = "a photograph of an astronaut riding a horse"
-with autocast("cuda"):
-    image = pipe(prompt, generator=generator)["sample"][0]  # image here is in PIL format
-    
-image.save(f"astronaut_rides_horse.png")
+**Note**:
+If you are limited by GPU memory and have less than 10GB of GPU RAM available, please make sure to load the StableDiffusionPipeline in float16 precision instead of the default float32 precision as done above. You can do so by telling diffusers to expect the weights to be in float16 precision:
+
+
+```py
+import torch
+
+pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16, use_auth_token=True)
+pipe = pipe.to(device)
 ```
 
 To swap out the noise scheduler, pass it to `from_pretrained`:
