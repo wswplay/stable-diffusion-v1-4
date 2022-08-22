@@ -1,6 +1,7 @@
 {
   "_class_name": "AutoencoderKL",
-  "_diffusers_version": "0.2.2",
+  "_diffusers_version": "0.2.3",
+  "_name_or_path": "./vae",
   "act_fn": "silu",
   "block_out_channels": [
     128,

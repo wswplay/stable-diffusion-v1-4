@@ -1,6 +1,6 @@
 {
   "_class_name": "StableDiffusionPipeline",
-  "_diffusers_version": "0.2.2",
+  "_diffusers_version": "0.2.3",
   "feature_extractor": [
     "transformers",
     "CLIPFeatureExtractor"
