@@ -69,7 +69,7 @@ import torch
 from torch import autocast
 from diffusers import StableDiffusionPipeline
 
-model_id = "CompVis/stable-diffusion-v1-1"
+model_id = "CompVis/stable-diffusion-v1-4"
 device = "cuda"
 
 
