@@ -153,20 +153,14 @@ Stable Diffusion v1-4 is a latent diffusion model which combines an autoencoder 
 - The non-pooled output of the text encoder is fed into the UNet backbone of the latent diffusion model via cross-attention.
 - The loss is a reconstruction objective between the noise that was added to the latent and the prediction made by the UNet.
 
-We currently provide four checkpoints, 
-- [`stable-diffusion-v1-1`](https://huggingface.co/CompVis/stable-diffusion-v1-1), 
-- [`stable-diffusion-v1-2`](https://huggingface.co/CompVis/stable-diffusion-v1-2), 
-- [`stable-diffusion-v1-3`](https://huggingface.co/CompVis/stable-diffusion-v1-3), and 
-- [`stable-diffusion-v1-4`](https://huggingface.co/CompVis/stable-diffusion-v1-4).
-
-The checkpoints were trained as follows:
-- `stable-diffusion-v1-1`: 237,000 steps at resolution `256x256` on [laion2B-en](https://huggingface.co/datasets/laion/laion2B-en).
+We currently provide four checkpoints, which were trained as follows.
+- [`stable-diffusion-v1-1`](https://huggingface.co/CompVis/stable-diffusion-v1-1): 237,000 steps at resolution `256x256` on [laion2B-en](https://huggingface.co/datasets/laion/laion2B-en).
   194,000 steps at resolution `512x512` on [laion-high-resolution](https://huggingface.co/datasets/laion/laion-high-resolution) (170M examples from LAION-5B with resolution `>= 1024x1024`).
-- `stable-diffusion-v1-2`: Resumed from `stable-diffusion-v1-1`.
+- [`stable-diffusion-v1-2`](https://huggingface.co/CompVis/stable-diffusion-v1-2): Resumed from `stable-diffusion-v1-1`.
   515,000 steps at resolution `512x512` on "laion-improved-aesthetics" (a subset of laion2B-en,
 filtered to images with an original size `>= 512x512`, estimated aesthetics score `> 5.0`, and an estimated watermark probability `< 0.5`. The watermark estimate is from the LAION-5B metadata, the aesthetics score is estimated using an [improved aesthetics estimator](https://github.com/christophschuhmann/improved-aesthetic-predictor)).
-- `stable-diffusion-v1-3`: Resumed from `stable-diffusion-v1-2`. 195,000 steps at resolution `512x512` on "laion-improved-aesthetics" and 10 % dropping of the text-conditioning to improve [classifier-free guidance sampling](https://arxiv.org/abs/2207.12598)
-- *`stable-diffusion-v1-4`*: ...
+- [`stable-diffusion-v1-3`](https://huggingface.co/CompVis/stable-diffusion-v1-3): Resumed from `stable-diffusion-v1-2`. 195,000 steps at resolution `512x512` on "laion-improved-aesthetics" and 10 % dropping of the text-conditioning to improve [classifier-free guidance sampling](https://arxiv.org/abs/2207.12598)
+- [**`stable-diffusion-v1-4`**](https://huggingface.co/CompVis/stable-diffusion-v1-4) *To-fill-here*
 
 - **Hardware:** 32 x 8 x A100 GPUs
 - **Optimizer:** AdamW
