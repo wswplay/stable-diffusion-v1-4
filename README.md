@@ -27,7 +27,7 @@ This model card focuses on the model associated with the Stable Diffusion model,
           pages     = {10684-10695}
       }
 
-## Usage examples
+## Examples
 
 ```bash
 pip install --upgrade diffusers transformers scipy
@@ -40,15 +40,20 @@ huggingface-cli login
 
 Running the pipeline with the default PLMS scheduler:
 ```python
+import torch
 from torch import autocast
 from diffusers import StableDiffusionPipeline
 
-model_id = "CompVis/stable-diffusion-v1-3-diffusers"
-pipe = StableDiffusionPipeline.from_pretrained(model_id, use_auth_token=True).to("cuda")
+model_id = "CompVis/stable-diffusion-v1-4"
+device = "cuda"
+
+generator = torch.Generator(device=device).manual_seed(0)
+pipe = StableDiffusionPipeline.from_pretrained(model_id, use_auth_token=True)
+pipe = pipe.to(device)
 
 prompt = "a photograph of an astronaut riding a horse"
 with autocast("cuda"):
-    image = pipe(prompt, guidance_scale=7)["sample"][0]  # image here is in PIL format
+    image = pipe(prompt)["sample"][0]  # image here is in PIL format
     
 image.save(f"astronaut_rides_horse.png")
 ```
@@ -170,43 +175,6 @@ This model card focuses on the model associated with the Stable Diffusion model,
           year      = {2022},
           pages     = {10684-10695}
       }
-
-## Usage examples
-
-```bash
-pip install --upgrade diffusers transformers scipy
-```
-
-Run this command to log in with your HF Hub token if you haven't before:
-```bash
-huggingface-cli login
-```
-
-Running the pipeline with the default PLMS scheduler:
-```python
-from torch import autocast
-from diffusers import StableDiffusionPipeline
-
-model_id = "CompVis/stable-diffusion-v1-3-diffusers"
-pipe = StableDiffusionPipeline.from_pretrained(model_id, use_auth_token=True).to("cuda")
-
-prompt = "a photograph of an astronaut riding a horse"
-with autocast("cuda"):
-    image = pipe(prompt, guidance_scale=7)["sample"][0]  # image here is in PIL format
-    
-image.save(f"astronaut_rides_horse.png")
-```
-
-To swap out the noise scheduler, pass it to `from_pretrained`:
-
-```python
-from diffusers import StableDiffusionPipeline, LMSDiscreteScheduler
-
-model_id = "CompVis/stable-diffusion-v1-3-diffusers"
-# Use the K-LMS scheduler here instead
-scheduler = LMSDiscreteScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", num_train_timesteps=1000)
-pipe = StableDiffusionPipeline.from_pretrained(model_id, scheduler=scheduler, use_auth_token=True).to("cuda")
-```
 
 # Uses
 
