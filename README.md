@@ -74,6 +74,12 @@ device = "cuda"
 
 pipe = StableDiffusionPipeline.from_pretrained(model_id, use_auth_token=True)
 pipe = pipe.to(device)
+
+prompt = "a photo of an astronaut riding a horse on mars"
+with autocast("cuda"):
+    image = pipe(prompt, guidance_scale=7.5)["sample"][0]  
+    
+image.save("astronaut_rides_horse.png")
 ```
 
 **Note**:
@@ -85,6 +91,12 @@ import torch
 
 pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16, use_auth_token=True)
 pipe = pipe.to(device)
+
+prompt = "a photo of an astronaut riding a horse on mars"
+with autocast("cuda"):
+    image = pipe(prompt, guidance_scale=7.5)["sample"][0]  
+    
+image.save("astronaut_rides_horse.png")
 ```
 
 To swap out the noise scheduler, pass it to `from_pretrained`:
@@ -97,6 +109,12 @@ model_id = "CompVis/stable-diffusion-v1-4"
 scheduler = LMSDiscreteScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", num_train_timesteps=1000)
 pipe = StableDiffusionPipeline.from_pretrained(model_id, scheduler=scheduler, use_auth_token=True)
 pipe = pipe.to("cuda")
+
+prompt = "a photo of an astronaut riding a horse on mars"
+with autocast("cuda"):
+    image = pipe(prompt, guidance_scale=7.5)["sample"][0]  
+    
+image.save("astronaut_rides_horse.png")
 ```
 
 # Uses
