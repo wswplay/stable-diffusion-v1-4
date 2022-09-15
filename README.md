@@ -79,7 +79,7 @@ pipe = pipe.to(device)
 
 prompt = "a photo of an astronaut riding a horse on mars"
 with autocast("cuda"):
-    image = pipe(prompt, guidance_scale=7.5)["sample"][0]  
+    image = pipe(prompt, guidance_scale=7.5).images[0]  
     
 image.save("astronaut_rides_horse.png")
 ```
@@ -96,7 +96,7 @@ pipe = pipe.to(device)
 
 prompt = "a photo of an astronaut riding a horse on mars"
 with autocast("cuda"):
-    image = pipe(prompt, guidance_scale=7.5)["sample"][0]  
+    image = pipe(prompt, guidance_scale=7.5).images[0]  
     
 image.save("astronaut_rides_horse.png")
 ```
@@ -114,7 +114,7 @@ pipe = pipe.to("cuda")
 
 prompt = "a photo of an astronaut riding a horse on mars"
 with autocast("cuda"):
-    image = pipe(prompt, guidance_scale=7.5)["sample"][0]  
+    image = pipe(prompt, guidance_scale=7.5).images[0]  
     
 image.save("astronaut_rides_horse.png")
 ```
