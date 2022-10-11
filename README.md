@@ -21,7 +21,7 @@ extra_gated_fields:
  I have read the License and agree with its terms: checkbox
 ---
 
-# Stable Diffusion v1-4 Model Card
+# Stable Diffusion 1-4 Model Card
 
 Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input.
 For more information about how Stable Diffusion functions, please have a look at [🤗's Stable Diffusion with 🧨Diffusers blog](https://huggingface.co/blog/stable_diffusion).
