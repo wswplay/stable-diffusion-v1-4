@@ -77,7 +77,7 @@ device = "cuda"
 pipe = StableDiffusionPipeline.from_pretrained(model_id, use_auth_token=True)
 pipe = pipe.to(device)
 
-prompt = "a photo of an astronaut riding a horse on mars"
+prompt = "A fat landlord wearing a Chinese purple robe, red waistcoat, yellow trousers, holding an abacus, wearing a brown hat, small glasses, and smiling."
 with autocast("cuda"):
     image = pipe(prompt, guidance_scale=7.5).images[0]  
     
