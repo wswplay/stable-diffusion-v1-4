@@ -291,11 +291,9 @@ filtered to images with an original size `>= 512x512`, estimated aesthetics scor
 - **Learning rate:** warmup to 0.0001 for 10,000 steps and then kept constant
 
 ## Evaluation Results 
-Evaluations with different classifier-free guidance scales (1.5, 2.0, 3.0, 4.0,
-5.0, 6.0, 7.0, 8.0) and 50 PLMS sampling
-steps show the relative improvements of the checkpoints:
+Evaluations with different classifier-free guidance scales (1.5, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0) and 50 PLMS sampling steps show the relative improvements of the checkpoints: 
 
-![pareto](https://huggingface.co/CompVis/stable-diffusion/resolve/main/v1-variants-scores.jpg)
+![pareto](https://github.com/CompVis/stable-diffusion/blob/main/assets/v1-variants-scores.jpg?raw=true)
 
 Evaluated using 50 PLMS steps and 10000 random prompts from the COCO2017 validation set, evaluated at 512x512 resolution.  Not optimized for FID scores.
 ## Environmental Impact
