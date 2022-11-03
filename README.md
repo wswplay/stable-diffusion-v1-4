@@ -31,6 +31,13 @@ checkpoint and subsequently fine-tuned on 225k steps at resolution 512x512 on "l
 
 This weights here are intended to be used with the 🧨 Diffusers library. If you are looking for the weights to be loaded into the CompVis Stable Diffusion codebase, [come here](https://huggingface.co/CompVis/stable-diffusion-v-1-4-original)
 
+StableDiffusionPipeline.from_pretrained(
+    'hakurei/waifu-diffusion',
+    torch_dtype=torch.float32
+).to('cuda')
+
+prompt = "1girl, aqua eyes, baseball cap, blonde hair, closed mouth, earrings, green background, hat, hoop earrings, jewelry, looking at viewer, shirt, short hair, simple background, solo, upper body, yellow shirt"
+with autocast("cuda"):
 ## Model Details
 - **Developed by:** Robin Rombach, Patrick Esser
 - **Model type:** Diffusion-based text-to-image generation model
