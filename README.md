@@ -4,7 +4,17 @@ tags:
 - stable-diffusion
 - stable-diffusion-diffusers
 - text-to-image
-inference: false
+widget:
+- text: "A high tech solarpunk utopia in the Amazon rainforest"
+  example_title: Amazon rainforest
+- text: "A pikachu fine dining with a view to the Eiffel Tower"
+  example_title: Pikachu in Paris
+- text: "A mecha robot in a favela in expressionist style"
+  example_title: Expressionist robot
+- text: "an insect robot preparing a delicious meal"
+  example_title: Insect robot
+- text: "A small cabin on top of a snowy mountain in the style of Disney, artstation"
+  example_title: Snowy disney cabin
 extra_gated_prompt: |-
   This model is open access and available to all, with a CreativeML OpenRAIL-M license further specifying rights and usage.
   The CreativeML OpenRAIL License specifies: 
