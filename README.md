@@ -75,36 +75,34 @@ Running the pipeline with the default PNDM scheduler:
 
 ```python
 import torch
-from torch import autocast
 from diffusers import StableDiffusionPipeline
 
 model_id = "CompVis/stable-diffusion-v1-4"
 device = "cuda"
 
 
-pipe = StableDiffusionPipeline.from_pretrained(model_id, use_auth_token=True)
+pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16, revision="fp16")
 pipe = pipe.to(device)
 
 prompt = "a photo of an astronaut riding a horse on mars"
-with autocast("cuda"):
-    image = pipe(prompt, guidance_scale=7.5).images[0]  
+image = pipe(prompt).images[0]  
     
 image.save("astronaut_rides_horse.png")
 ```
 
 **Note**:
-If you are limited by GPU memory and have less than 10GB of GPU RAM available, please make sure to load the StableDiffusionPipeline in float16 precision instead of the default float32 precision as done above. You can do so by telling diffusers to expect the weights to be in float16 precision:
+If you are limited by GPU memory and have less than 4GB of GPU RAM available, please make sure to load the StableDiffusionPipeline in float16 precision instead of the default float32 precision as done above. You can do so by telling diffusers to expect the weights to be in float16 precision:
 
 
 ```py
 import torch
 
-pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16, revision="fp16", use_auth_token=True)
+pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16, revision="fp16")
 pipe = pipe.to(device)
+pipe.enable_attention_slicing()
 
 prompt = "a photo of an astronaut riding a horse on mars"
-with autocast("cuda"):
-    image = pipe(prompt, guidance_scale=7.5).images[0]  
+image = pipe(prompt).images[0]  
     
 image.save("astronaut_rides_horse.png")
 ```
@@ -112,17 +110,17 @@ image.save("astronaut_rides_horse.png")
 To swap out the noise scheduler, pass it to `from_pretrained`:
 
 ```python
-from diffusers import StableDiffusionPipeline, LMSDiscreteScheduler
+from diffusers import StableDiffusionPipeline, EulerDiscreteScheduler
 
 model_id = "CompVis/stable-diffusion-v1-4"
-# Use the K-LMS scheduler here instead
-scheduler = LMSDiscreteScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", num_train_timesteps=1000)
-pipe = StableDiffusionPipeline.from_pretrained(model_id, scheduler=scheduler, use_auth_token=True)
+
+# Use the Euler scheduler here instead
+scheduler = EulerDiscreteScheduler.from_pretrained(model_id, subfolder="scheduler")
+pipe = StableDiffusionPipeline.from_pretrained(model_id, scheduler=scheduler, torch_dtype=torch.float16, revision="fp16")
 pipe = pipe.to("cuda")
 
 prompt = "a photo of an astronaut riding a horse on mars"
-with autocast("cuda"):
-    image = pipe(prompt, guidance_scale=7.5).images[0]  
+image = pipe(prompt).images[0]  
     
 image.save("astronaut_rides_horse.png")
 ```
