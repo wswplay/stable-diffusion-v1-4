@@ -5,12 +5,12 @@ tags:
 - stable-diffusion-diffusers
 - text-to-image
 widget:
-- text: "A high tech solarpunk utopia in the Amazon rainforest"
-  example_title: Amazon rainforest
-- text: "A pikachu fine dining with a view to the Eiffel Tower"
-  example_title: Pikachu in Paris
-- text: "A mecha robot in a favela in expressionist style"
-  example_title: Expressionist robot
+- text: "A misty forest at night"
+  example_title: Misty forest
+- text: "A small ugly man with long white hair and beard"
+  example_title: Geralt like
+- text: "A dressing looking like a witcher but woth two swords"
+  example_title: Recreation of a character
 - text: "an insect robot preparing a delicious meal"
   example_title: Insect robot
 - text: "A small cabin on top of a snowy mountain in the style of Disney, artstation"
