@@ -238,11 +238,7 @@ Using the model to generate content that is cruel to individuals is a misuse of 
 - The model does not perform well on more difficult tasks which involve compositionality, such as rendering an image corresponding to “A red cube on top of a blue sphere”
 - Faces and people in general may not be generated properly.
 - The model was trained mainly with English captions and will not work as well in other languages.
-- The autoencoding part of the model is lossy
-- The model was trained on a large-scale dataset
-  [LAION-5B](https://laion.ai/blog/laion-5b/) which contains adult material
-  and is not fit for product use without additional safety mechanisms and
-  considerations.
+- The autoencoding part of the model is lossy.
 - No additional measures were used to deduplicate the dataset. As a result, we observe some degree of memorization for images that are duplicated in the training data.
   The training data can be searched at [https://rom1504.github.io/clip-retrieval/](https://rom1504.github.io/clip-retrieval/) to possibly assist in the detection of memorized images.
 
