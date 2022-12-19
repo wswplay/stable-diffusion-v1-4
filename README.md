@@ -65,12 +65,6 @@ We recommend using [🤗's Diffusers library](https://github.com/huggingface/dif
 pip install --upgrade diffusers transformers scipy
 ```
 
-Run this command to log in with your HF Hub token if you haven't before:
-
-```bash
-huggingface-cli login
-```
-
 Running the pipeline with the default PNDM scheduler:
 
 ```python
@@ -81,7 +75,7 @@ model_id = "CompVis/stable-diffusion-v1-4"
 device = "cuda"
 
 
-pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16, revision="fp16")
+pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
 pipe = pipe.to(device)
 
 prompt = "a photo of an astronaut riding a horse on mars"
@@ -97,7 +91,7 @@ If you are limited by GPU memory and have less than 4GB of GPU RAM available, pl
 ```py
 import torch
 
-pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16, revision="fp16")
+pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
 pipe = pipe.to(device)
 pipe.enable_attention_slicing()
 
@@ -116,7 +110,7 @@ model_id = "CompVis/stable-diffusion-v1-4"
 
 # Use the Euler scheduler here instead
 scheduler = EulerDiscreteScheduler.from_pretrained(model_id, subfolder="scheduler")
-pipe = StableDiffusionPipeline.from_pretrained(model_id, scheduler=scheduler, torch_dtype=torch.float16, revision="fp16")
+pipe = StableDiffusionPipeline.from_pretrained(model_id, scheduler=scheduler, torch_dtype=torch.float16)
 pipe = pipe.to("cuda")
 
 prompt = "a photo of an astronaut riding a horse on mars"
