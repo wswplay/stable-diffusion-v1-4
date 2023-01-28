@@ -1,4 +1,4 @@
----
+
 license: creativeml-openrail-m
 tags:
 - stable-diffusion
@@ -25,7 +25,7 @@ extra_gated_prompt: |-
   Please read the full license carefully here: https://huggingface.co/spaces/CompVis/stable-diffusion-license
       
 extra_gated_heading: Please read the LICENSE to access this model
----
+
 
 # Stable Diffusion v1-4 Model Card
 
