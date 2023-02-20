@@ -140,7 +140,7 @@ pipeline, params = FlaxStableDiffusionPipeline.from_pretrained(
 prompt = "a photo of an astronaut riding a horse on mars"
 
 prng_seed = jax.random.PRNGKey(0)
-num_inference_steps = 50
+num_inference_steps = 150
 
 num_samples = jax.device_count()
 prompt = num_samples * [prompt]
@@ -173,7 +173,7 @@ pipeline, params = FlaxStableDiffusionPipeline.from_pretrained(
 prompt = "a photo of an astronaut riding a horse on mars"
 
 prng_seed = jax.random.PRNGKey(0)
-num_inference_steps = 50
+num_inference_steps = 150
 
 num_samples = jax.device_count()
 prompt = num_samples * [prompt]
