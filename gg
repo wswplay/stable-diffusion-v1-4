@@ -1,0 +1,1 @@
+x_checked_image, has_nsfw_concept = check_safety(x_samples_ddim)
